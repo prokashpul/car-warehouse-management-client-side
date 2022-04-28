@@ -10,3 +10,4 @@
 > - npm create-react-app
 > - npm install firebase
 > - npm install react-router-dom@6
+> - npm install react-icons --save
