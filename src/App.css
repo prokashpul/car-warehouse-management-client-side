@@ -46,7 +46,7 @@ h4 {
   gap: 10px;
   align-items: center;
   border: var(--border);
-  padding: 3px 12px;
+  padding: 5px 12px;
   color: var(--primary-color);
   transition: var(--transition);
   font-size: 16px;

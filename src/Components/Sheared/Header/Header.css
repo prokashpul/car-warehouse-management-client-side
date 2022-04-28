@@ -21,8 +21,15 @@
   text-transform: uppercase;
 }
 .nav-menu .nav-items a.active {
-  color: var(--secondary-color);
-  text-decoration: underline;
+  background: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  border: var(--border);
+  padding: 5px 12px;
+  color: var(--white-color);
+  border-radius: var(--radius);
 }
 .humber-menu {
   display: none;
@@ -53,10 +60,7 @@
   .nav-menu .nav-items a {
     color: var(--white-color);
   }
-  .nav-menu .nav-items a.active {
-    color: var(--primary-color);
-    text-decoration: underline;
-  }
+
   .humber-menu {
     position: absolute;
     right: 20px;

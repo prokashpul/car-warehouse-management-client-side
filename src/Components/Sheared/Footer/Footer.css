@@ -1,0 +1,17 @@
+.footer {
+  height: 50px;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.copyright {
+  font-size: 20px;
+}
+.copyright span {
+  color: var(--primary-color);
+  font-size: 22px;
+  font-weight: 700;
+}
