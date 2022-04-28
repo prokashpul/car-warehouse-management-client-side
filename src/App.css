@@ -1,38 +1,105 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  outline-width: 0;
+  line-height: 1.5;
+  list-style: none;
+  text-decoration: none;
+}
+body {
+  font-family: "Karla", sans-serif;
+  color: var(--secondary-color);
+}
+:root {
+  --primary-color: #f30000;
+  --secondary-color: #2b2e33;
+  --white-color: #fff;
+  --border: 1px solid var(--primary-color);
+  --transition: all 0.4s ease;
+  --outline-width: 2px solid var(--primary-color);
+  --shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+  --radius: 5px;
+}
+/* common style */
+h1 {
+  font-size: 3.4rem;
+}
+h2 {
+  font-size: 2.5rem;
+}
+h3 {
+  font-size: 2rem;
+}
+h4 {
+  font-size: 1.6rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.btn {
+  background: transparent;
+  border: var(--border);
+  padding: 3px 12px;
+  color: var(--primary-color);
+  transition: var(--transition);
+  font-size: 16px;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.btn:hover {
+  background: var(--primary-color);
+  color: var(--white-color);
+  box-shadow: var(--shadow);
+}
+a {
+  color: var(--primary-color);
+  font-size: 16px;
+  transition: var(--transition);
+}
+a:hover {
+  color: var(--secondary-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+@media (max-width: 920px) {
+  .container {
+    max-width: 95%;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.2rem;
+  }
+  h3 {
+    font-size: 1.8rem;
+  }
+  h4 {
+    font-size: 1.4rem;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 677px) {
+  .container {
+    max-width: 95%;
   }
-  to {
-    transform: rotate(360deg);
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.6rem;
+  }
+  h4 {
+    font-size: 1.2rem;
   }
 }
