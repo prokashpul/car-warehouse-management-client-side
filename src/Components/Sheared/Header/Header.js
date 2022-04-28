@@ -15,7 +15,10 @@ const Header = () => {
           {!openMenu ? <HiMenuAlt2 /> : <HiX />}
         </div>
 
-        <ul className={`nav-items ${openMenu ? "open-menu" : ""}`}>
+        <ul
+          onClick={() => setMenu(!openMenu)}
+          className={`nav-items ${openMenu ? "open-menu" : ""}`}
+        >
           <li className="nav-item">
             <NavLink
               className={({ isActive }) => (isActive ? "active" : "")}

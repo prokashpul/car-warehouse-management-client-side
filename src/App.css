@@ -41,6 +41,10 @@ h4 {
 
 .btn {
   background: transparent;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
   border: var(--border);
   padding: 3px 12px;
   color: var(--primary-color);
