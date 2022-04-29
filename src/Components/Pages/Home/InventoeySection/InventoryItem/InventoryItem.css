@@ -1,0 +1,22 @@
+.inventory-item {
+  box-shadow: var(--shadow);
+  border-radius: 10px;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+.inventory-header img {
+  width: 100%;
+  height: 250px;
+}
+.inventory-body {
+  text-align: center;
+  margin: 0 10px;
+}
+.inventory-body h3,
+.inventory-body span {
+  color: var(--primary-color);
+}
+.inventory-item .btn {
+  width: 50%;
+  margin: 0 auto;
+}

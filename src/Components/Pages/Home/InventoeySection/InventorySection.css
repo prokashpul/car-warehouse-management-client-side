@@ -1,0 +1,22 @@
+.home-inventory {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 50px;
+}
+.inventory-heading {
+  margin: 20px 0;
+  text-align: center;
+}
+.inventory-bottom {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+@media (max-width: 677px) {
+  .home-inventory {
+    grid-template-columns: 1fr;
+  }
+}

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import title from "../../../../Utilities/dynamicName";
+import Spinner from "../../../Spinner/Spinner";
 import DataTables from "./DataTable/DataTables";
 
 const AllInventory = () => {
@@ -83,7 +84,7 @@ const AllInventory = () => {
     []
   );
   if (loading) {
-    return <>Loading...</>;
+    return <Spinner></Spinner>;
   }
 
   return (
