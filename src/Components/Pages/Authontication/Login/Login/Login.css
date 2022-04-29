@@ -73,8 +73,7 @@
   .reg {
     margin-bottom: 50px;
   }
-  .login-form,
-  .reg-form {
+  .login-form {
     display: block;
     margin: 0px;
     height: auto;

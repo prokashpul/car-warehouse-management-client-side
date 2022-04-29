@@ -7,6 +7,7 @@
   height: 40px;
   padding: 0 10px;
   border-radius: var(--radius);
+  margin-bottom: 15px;
 }
 .form-group input:focus-within {
   outline-width: var(--outline-width);

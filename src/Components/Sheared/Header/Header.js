@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { HiMenuAlt2, HiX } from "react-icons/hi";
+import { signOut } from "firebase/auth";
 import "./Header.css";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase/firebase.init";
 const Header = () => {
   const [openMenu, setMenu] = useState(false);
+  const [user] = useAuthState(auth);
   return (
     <header className="header">
       <nav className="nav-menu">
@@ -27,46 +31,56 @@ const Header = () => {
               Home
             </NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink
-              to="/manage-item"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Manage Items
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              to="/add-item"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Add Items
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              to="/my-item"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              My Items
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              to="/login"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Login
-            </NavLink>
-          </li>
-          <li className="nav-item ">
-            <NavLink
-              to="/register"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Sin up
-            </NavLink>
-          </li>
+          {user ? (
+            <>
+              <li className="nav-item">
+                <NavLink
+                  to="/manage-item"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Manage Items
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  to="/add-item"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Add Items
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  to="/my-item"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  My Items
+                </NavLink>
+              </li>
+              <li onClick={() => signOut(auth)} className="nav-item ">
+                <NavLink to="/login">Log Out</NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="nav-item">
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Login
+                </NavLink>
+              </li>
+              <li className="nav-item ">
+                <NavLink
+                  to="/register"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Sin up
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </header>

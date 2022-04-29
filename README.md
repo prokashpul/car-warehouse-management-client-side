@@ -9,6 +9,7 @@
 
 > - npm create-react-app
 > - npm install firebase
+> - npm install --save react-firebase-hooks
 > - npm install react-router-dom@6
 > - npm install react-icons --save
 > - npm install react-hook-form

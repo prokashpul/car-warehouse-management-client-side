@@ -1,6 +1,22 @@
 import React from "react";
 import "./SocialLogin.css";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import auth from "../../../../../firebase/firebase.init";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 const SocialLogin = () => {
+  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const navigate = useNavigate();
+  if (loading) {
+    toast("wait for processing ...");
+  }
+  if (error) {
+    toast(error.message);
+  }
+  if (user) {
+    navigate("/");
+  }
   return (
     <>
       {" "}
@@ -10,7 +26,7 @@ const SocialLogin = () => {
         <span></span>
       </div>
       <div className="social-login">
-        <button className="btn">
+        <button onClick={() => signInWithGoogle()} className="btn">
           <img src="https://i.ibb.co/cvbHMw3/Google.png" alt="" />
         </button>
         <button className="btn">
