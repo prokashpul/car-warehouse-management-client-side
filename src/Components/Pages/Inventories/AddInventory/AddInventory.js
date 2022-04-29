@@ -19,7 +19,10 @@ const AddInventory = () => {
   const onSubmit = async (inventory) => {
     inventory.email = user.email;
     console.log(inventory);
-    const { data } = await axios.post("http://localhost:5000/cars", inventory);
+    const { data } = await axios.post(
+      "https://car-manager-server.herokuapp.com/cars",
+      inventory
+    );
     if (data.success) {
       toast.success(data?.message);
     } else {

@@ -5,22 +5,14 @@ import ClipLoader from "react-spinners/ClipLoader";
 const override = css`
   display: block;
   margin: 0 auto;
-  border-color: var(--primary-color);
+  border-color: red;
 `;
 const Spinner = () => {
-  const [loading, setLoading] = useState(true);
-  const [color, setColor] = useState("#ffffff");
+  const [color] = useState();
 
   return (
     <div className="sweet-loading">
-      <button onClick={() => setLoading(!loading)}>Toggle Loader</button>
-      <input
-        value={color}
-        onChange={(input) => setColor(input.target.value)}
-        placeholder="Color of the loader"
-      />
-
-      <ClipLoader color={color} loading={loading} css={override} size={150} />
+      <ClipLoader color={color} css={override} size={150} />
     </div>
   );
 };

@@ -4,7 +4,7 @@
 > - server git link - https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-prokashpul
 > - clint site git link - https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-prokashpul
 > - heroku server - https://car-manager-server.herokuapp.com/
->   -stackoverflow Answer- https://stackoverflow.com/a/72060611/18097290
+> - stackoverflow Answer- https://stackoverflow.com/a/72060611/18097290
 
 ## `Technology Used :`
 

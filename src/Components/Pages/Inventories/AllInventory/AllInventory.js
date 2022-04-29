@@ -17,7 +17,7 @@ const AllInventory = () => {
     const runData = async () => {
       setLoading(true);
       const { data } = await axios(
-        `http://localhost:5000/cars?limit=${pageItem}&pageNum=${page}`
+        `https://car-manager-server.herokuapp.com/cars?limit=${pageItem}&pageNum=${page}`
       );
       if (data?.success) {
         setInventories(data.data);
@@ -34,7 +34,7 @@ const AllInventory = () => {
   const deleteItem = (id) => {
     const proceed = window.confirm("Are you agree to delete ?");
     if (proceed) {
-      const url = `http://localhost:5000/cars/${id}`;
+      const url = `https://car-manager-server.herokuapp.com/cars/${id}`;
       fetch(url, {
         method: "DELETE",
       })
