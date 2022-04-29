@@ -1,7 +1,9 @@
+import axios from "axios";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../../../firebase/firebase.init";
 import title from "../../../../Utilitis/dynamicName";
 import "./AddInventory.css";
@@ -14,9 +16,15 @@ const AddInventory = () => {
     formState: { errors },
     reset,
   } = useForm();
-  const onSubmit = (data) => {
-    data.email = user.email;
-    console.log(data);
+  const onSubmit = async (inventory) => {
+    inventory.email = user.email;
+    console.log(inventory);
+    const { data } = await axios.post("http://localhost:5000/cars", inventory);
+    if (data.success) {
+      toast.success(data?.message);
+    } else {
+      toast.error(data?.error);
+    }
     reset();
   };
   return (
@@ -105,6 +113,18 @@ const AddInventory = () => {
               {errors.supplier && (
                 <p className="form-error">{errors.supplier.message}</p>
               )}
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                id="image"
+                placeholder="Image Url"
+                {...register("img", {
+                  required: "You must specify a image url",
+                })}
+              />
+
+              {errors.img && <p className="form-error">{errors.img.message}</p>}
             </div>
           </div>
         </div>
