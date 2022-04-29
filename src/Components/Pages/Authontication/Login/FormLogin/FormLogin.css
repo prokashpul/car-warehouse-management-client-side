@@ -1,0 +1,17 @@
+.form-group {
+  width: 100%;
+}
+.form-group input {
+  border: var(--border);
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  border-radius: var(--radius);
+}
+.form-group input:focus-within {
+  outline-width: var(--outline-width);
+}
+.form-error {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}

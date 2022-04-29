@@ -1,0 +1,86 @@
+.log-in {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 57vh;
+  margin-top: 50px;
+}
+.login-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  margin: 50px;
+  box-shadow: var(--shadow);
+  height: 550px;
+  overflow: hidden;
+}
+.login-banner,
+.reg-banner {
+  position: relative;
+  overflow: hidden;
+}
+.login-banner img,
+.reg-banner img {
+  width: 100%;
+  height: 100%;
+}
+.login-banner::after,
+.reg-banner::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: absolute;
+  background: rgba(51, 0, 255, 0.24);
+  left: 0;
+}
+.login-form-side,
+.reg-form-side {
+  padding: 20px;
+}
+.login-form-side h2,
+.reg-form-side h2 {
+  text-align: center;
+  margin: 20px 0;
+}
+.or-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+.or-divider span {
+  width: 100%;
+  height: 1px;
+  background-color: var(--secondary-color);
+}
+.or-divider p {
+  color: var(--primary-color);
+  font-size: 20px;
+  font-weight: 700;
+}
+@media (max-width: 920px) {
+  .log-in,
+  .reg {
+    margin-bottom: 50px;
+    min-height: 80vh;
+  }
+}
+@media (max-width: 677px) {
+  .log-in,
+  .reg {
+    margin-bottom: 50px;
+  }
+  .login-form,
+  .reg-form {
+    display: block;
+    margin: 0px;
+    height: auto;
+  }
+  .login-banner,
+  .reg-banner {
+    display: none;
+  }
+}

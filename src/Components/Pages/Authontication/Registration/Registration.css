@@ -1,0 +1,19 @@
+.reg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.reg-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  margin: 50px;
+  box-shadow: var(--shadow);
+  height: 620px;
+  overflow: hidden;
+}
+.reg input {
+  margin-bottom: 15px;
+}

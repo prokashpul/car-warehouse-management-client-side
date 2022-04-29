@@ -61,7 +61,7 @@ const Header = () => {
           </li>
           <li className="nav-item ">
             <NavLink
-              to="/registration"
+              to="/register"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
               Sin up
