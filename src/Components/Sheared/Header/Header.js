@@ -57,8 +57,11 @@ const Header = () => {
                   My Items
                 </NavLink>
               </li>
+
               <li onClick={() => signOut(auth)} className="nav-item ">
-                <NavLink to="/login">Log Out</NavLink>
+                <NavLink to="/login">
+                  Log Out ({user?.displayName.slice(0, 2)})
+                </NavLink>
               </li>
             </>
           ) : (

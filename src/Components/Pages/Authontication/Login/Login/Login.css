@@ -15,8 +15,11 @@
   height: 550px;
   overflow: hidden;
 }
-.login-banner,
-.reg-banner {
+.login-banner {
+  background: url(https://i.ibb.co/mSxmJHL/olav-tvedt-login.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   position: relative;
   overflow: hidden;
 }
@@ -32,7 +35,7 @@
   width: 100%;
   top: 0;
   position: absolute;
-  background: rgba(51, 0, 255, 0.24);
+  background: rgba(51, 0, 255, 0.4);
   left: 0;
 }
 .login-form-side,

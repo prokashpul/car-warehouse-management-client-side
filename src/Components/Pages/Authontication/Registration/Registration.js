@@ -1,27 +1,42 @@
+import { async } from "@firebase/util";
 import React from "react";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import auth from "../../../../firebase/firebase.init";
 import SocialLogin from "../Login/SocialLogin.js/SocialLogin";
 import "./Registration.css";
 const Registration = () => {
+  const [createUserWithEmailAndPassword, user, loading] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile] = useUpdateProfile(auth);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     if (data.password === data.conPassword) {
-      console.log(data);
+      await createUserWithEmailAndPassword(data?.email, data?.password);
+      await updateProfile(data?.name);
     } else {
       toast("Password not mashed");
     }
   };
+  if (user) {
+    toast("successfully");
+    navigate("/");
+  }
+
   return (
     <div className="reg container">
       <div className="reg-form">
-        <div className="login-banner">
-          <img src="https://i.ibb.co/mSxmJHL/olav-tvedt-login.jpg" alt="" />
-        </div>
+        <div className="login-banner"></div>
         <div className="reg-form-side">
           <h2>Registration</h2>
           <div className="register">
@@ -31,6 +46,7 @@ const Registration = () => {
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   placeholder="Full Name"
                   {...register("name", {
                     required: "You must specify a name field",
@@ -46,6 +62,7 @@ const Registration = () => {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   placeholder="Email"
                   {...register("email", {
                     required: "You must specify a email field",
@@ -60,6 +77,7 @@ const Registration = () => {
                 <label htmlFor="password">Password: </label>
                 <input
                   type="password"
+                  name="password"
                   id="password"
                   placeholder="Password"
                   {...register("password", {
@@ -95,7 +113,7 @@ const Registration = () => {
                   <p className="form-error">{errors.conPassword.message}</p>
                 )}
               </div>
-
+              {loading && <p>Loading....</p>}
               <input className="btn" type="submit" value="Sin Up" />
             </form>
           </div>
