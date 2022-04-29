@@ -1,0 +1,39 @@
+.home-banner {
+  background: url(https://i.ibb.co/LxKB8r5/background-search.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-attachment: fixed;
+  height: 500px;
+}
+.banner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  height: 500px;
+}
+.banner-left {
+  color: var(--white-color);
+}
+.banner-left h2 {
+  color: var(--primary-color);
+}
+.banner-left .btn {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+.home-banner .banner-right img {
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 677px) {
+  .home-banner .banner-right img {
+    display: none;
+  }
+  .banner-container,
+  .home-banner {
+    height: 350px;
+  }
+}

@@ -38,6 +38,10 @@ tr:nth-child(even) {
 .num-pg {
   font-size: 20px;
 }
+.selected {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
 @media (max-width: 677px) {
   .inventory-table table {
     width: 100%;

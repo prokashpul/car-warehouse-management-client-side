@@ -11,6 +11,7 @@ const AllInventory = () => {
   const [page, setPage] = useState(0);
   const [pageItem] = useState(5);
   const [countPage, setCountPage] = useState(0);
+
   useEffect(() => {
     const runData = async () => {
       setLoading(true);
@@ -29,13 +30,23 @@ const AllInventory = () => {
     };
     runData();
   }, [pageItem, page]);
-
+  const deleteItem = (id) => {
+    const proceed = window.confirm("Are you agree to delete ?");
+    if (proceed) {
+      const url = `http://localhost:5000/cars/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const reaming = inventories?.filter((inv) => inv._id !== id);
+          setInventories(reaming);
+          toast("delete successfully");
+        });
+    }
+  };
   const columns = useMemo(
     () => [
-      {
-        Header: "ID",
-        accessor: "_id",
-      },
       {
         Header: "Car Name",
         accessor: "name",
@@ -61,7 +72,12 @@ const AllInventory = () => {
       },
       {
         Header: "Delete",
-        Cell: ({ cell: { value } }) => <button className="btn">Delete</button>,
+        accessor: "_id",
+        Cell: ({ cell: { value } }) => (
+          <button onClick={() => deleteItem(value)} className="btn">
+            Delete
+          </button>
+        ),
       },
     ],
     []
@@ -79,8 +95,8 @@ const AllInventory = () => {
         {[...Array(countPage).keys()].map((num) => (
           <div
             onClick={() => setPage(num)}
-            className="num-pg btn"
-            keys={num._id}
+            keys={num}
+            className={`num-pg btn ${page === num ? "selected" : ""}`}
           >
             {num + 1}
           </div>
