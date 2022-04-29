@@ -8,11 +8,11 @@ import auth from "../../../firebase/firebase.init";
 const Header = () => {
   const [openMenu, setMenu] = useState(false);
   const [user] = useAuthState(auth);
+  console.log(user);
   return (
     <header className="header">
       <nav className="nav-menu">
         <h2 className="logo">
-          {" "}
           Car<span>Manager</span>
         </h2>
         <div onClick={() => setMenu(!openMenu)} className="humber-menu">
@@ -60,7 +60,8 @@ const Header = () => {
 
               <li onClick={() => signOut(auth)} className="nav-item ">
                 <NavLink to="/login">
-                  Log Out ({user?.displayName.slice(0, 2)})
+                  Log Out (
+                  {user?.displayName ? user?.displayName.slice(0, 3) : "User"})
                 </NavLink>
               </li>
             </>

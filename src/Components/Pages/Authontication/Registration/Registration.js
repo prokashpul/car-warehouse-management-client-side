@@ -1,33 +1,40 @@
-import { async } from "@firebase/util";
 import React from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../../firebase/firebase.init";
 import SocialLogin from "../Login/SocialLogin.js/SocialLogin";
 import "./Registration.css";
+
 const Registration = () => {
-  const [createUserWithEmailAndPassword, user, loading] =
+  const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile] = useUpdateProfile(auth);
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
     if (data.password === data.conPassword) {
       await createUserWithEmailAndPassword(data?.email, data?.password);
-      await updateProfile(data?.name);
+      const name = data?.name;
+      await updateProfile({ displayName: name });
+      console.log(data.name);
     } else {
       toast("Password not mashed");
     }
+    reset();
   };
+  if (error) {
+    toast(error.message);
+  }
   if (user) {
     toast("successfully");
     navigate("/");
@@ -114,8 +121,12 @@ const Registration = () => {
                 )}
               </div>
               {loading && <p>Loading....</p>}
+
               <input className="btn" type="submit" value="Sin Up" />
             </form>
+            <p className="form-link">
+              Already have an account ? <Link to="/login">Sin Up</Link>{" "}
+            </p>
           </div>
           <SocialLogin />
         </div>

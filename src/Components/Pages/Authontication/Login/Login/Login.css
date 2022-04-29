@@ -12,7 +12,6 @@
   width: 100%;
   margin: 50px;
   box-shadow: var(--shadow);
-  height: 550px;
   overflow: hidden;
 }
 .login-banner {
