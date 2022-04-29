@@ -1,10 +1,14 @@
 import React from "react";
 import { HiOutlineArrowSmRight } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 import "./InventoryItem.css";
 
 const InventoryItem = ({ inventory }) => {
+  const navigate = useNavigate();
   const { name, img, price, quantity, des, supplier, _id } = inventory || {};
-  console.log(inventory);
+  const updateButton = (id) => {
+    navigate(`/update/${id}`);
+  };
   return (
     <div className="inventory-item ">
       <div className="inventory-header">
@@ -21,7 +25,7 @@ const InventoryItem = ({ inventory }) => {
         </strong>
         <p>Supplier : {supplier}</p>
       </div>
-      <button className="btn">
+      <button onClick={() => updateButton(_id)} className="btn">
         <HiOutlineArrowSmRight /> Update
       </button>
     </div>

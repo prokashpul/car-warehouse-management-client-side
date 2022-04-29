@@ -12,6 +12,9 @@
   text-align: center;
   margin: 0 10px;
 }
+.inventory-body h3 {
+  font-size: 1.6rem;
+}
 .inventory-body h3,
 .inventory-body span {
   color: var(--primary-color);
@@ -19,4 +22,5 @@
 .inventory-item .btn {
   width: 50%;
   margin: 0 auto;
+  margin-top: 20px;
 }

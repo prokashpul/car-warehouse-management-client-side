@@ -1,7 +1,7 @@
 import React from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../../../firebase/firebase.init";
 import "./FormLogin.css";
@@ -9,6 +9,8 @@ const FormLogin = () => {
   const navigate = useNavigate();
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -25,7 +27,7 @@ const FormLogin = () => {
     toast(error.message);
   }
   if (user) {
-    navigate("/");
+    navigate(from, { replace: true });
     toast("welcome to webcarmanger");
   }
 

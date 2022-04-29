@@ -33,7 +33,7 @@ const InventorySection = () => {
       <div className="home-inventory">
         {inventories?.map((inventory) => (
           <InventoryItem
-            keys={inventory?._id}
+            key={inventory?._id}
             inventory={inventory}
           ></InventoryItem>
         ))}

@@ -2,12 +2,14 @@ import React from "react";
 import "./SocialLogin.css";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "../../../../../firebase/firebase.init";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   if (loading) {
     toast("wait for processing ...");
   }
@@ -15,7 +17,7 @@ const SocialLogin = () => {
     toast(error.message);
   }
   if (user) {
-    navigate("/");
+    navigate(from, { replace: true });
   }
   return (
     <>

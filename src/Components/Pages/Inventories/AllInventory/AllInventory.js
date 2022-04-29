@@ -81,7 +81,7 @@ const AllInventory = () => {
         ),
       },
     ],
-    []
+    [deleteItem]
   );
   if (loading) {
     return <Spinner></Spinner>;
@@ -96,7 +96,7 @@ const AllInventory = () => {
         {[...Array(countPage).keys()].map((num) => (
           <div
             onClick={() => setPage(num)}
-            keys={num}
+            key={num}
             className={`num-pg btn ${page === num ? "selected" : ""}`}
           >
             {num + 1}

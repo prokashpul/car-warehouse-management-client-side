@@ -12,6 +12,8 @@ import AllInventory from "./Components/Pages/Inventories/AllInventory/AllInvento
 
 import Inventories from "./Components/Pages/Inventories/Inventories/Inventories";
 import MyItems from "./Components/Pages/Inventories/MyItems/MyItems";
+import UpdateInventory from "./Components/Pages/UpdateInventory/UpdateInventory";
+import RequireAuth from "./Components/RequirAuth/RequirAuth";
 import Footer from "./Components/Sheared/Footer/Footer";
 import Header from "./Components/Sheared/Header/Header";
 
@@ -23,6 +25,14 @@ function App() {
         <Route path="/" element={<Home></Home>} />
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Registration />} />
+        <Route
+          path="/update/:inventoryId"
+          element={
+            <RequireAuth>
+              <UpdateInventory></UpdateInventory>
+            </RequireAuth>
+          }
+        />
         <Route path="/inventories" element={<Inventories></Inventories>}>
           <Route
             path="/inventories/add-inventory"
