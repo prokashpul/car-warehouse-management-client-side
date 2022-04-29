@@ -13,10 +13,10 @@
 .nav-menu .nav-items {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 15px;
 }
 .nav-menu .nav-items a {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -33,6 +33,9 @@
 }
 .humber-menu {
   display: none;
+}
+.logo {
+  cursor: pointer;
 }
 .logo span {
   color: var(--primary-color);

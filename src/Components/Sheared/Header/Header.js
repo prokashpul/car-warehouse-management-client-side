@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { HiMenuAlt2, HiX } from "react-icons/hi";
 import { signOut } from "firebase/auth";
 import "./Header.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase/firebase.init";
+
 const Header = () => {
   const [openMenu, setMenu] = useState(false);
   const [user] = useAuthState(auth);
-  console.log(user);
+  const navigate = useNavigate();
+
   return (
     <header className="header">
       <nav className="nav-menu">
-        <h2 className="logo">
+        <h2 onClick={() => navigate("/")} className="logo">
           Car<span>Manager</span>
         </h2>
         <div onClick={() => setMenu(!openMenu)} className="humber-menu">
@@ -31,11 +33,12 @@ const Header = () => {
               Home
             </NavLink>
           </li>
+
           {user ? (
             <>
               <li className="nav-item">
                 <NavLink
-                  to="/manage-item"
+                  to="/inventories/all-inventory"
                   className={({ isActive }) => (isActive ? "active" : "")}
                 >
                   Manage Items
@@ -43,7 +46,7 @@ const Header = () => {
               </li>
               <li className="nav-item">
                 <NavLink
-                  to="/add-item"
+                  to="/inventories/add-inventory"
                   className={({ isActive }) => (isActive ? "active" : "")}
                 >
                   Add Items
@@ -51,7 +54,7 @@ const Header = () => {
               </li>
               <li className="nav-item">
                 <NavLink
-                  to="/my-item"
+                  to="/inventories/my-items"
                   className={({ isActive }) => (isActive ? "active" : "")}
                 >
                   My Items
