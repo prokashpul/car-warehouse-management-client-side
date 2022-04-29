@@ -8,20 +8,27 @@ const AllInventory = () => {
   title("Manage All Inventories");
   const [inventories, setInventories] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const [page, setPage] = useState(0);
+  const [pageItem] = useState(5);
+  const [countPage, setCountPage] = useState(0);
   useEffect(() => {
     const runData = async () => {
       setLoading(true);
-      const { data } = await axios("http://localhost:5000/cars?limit=20");
+      const { data } = await axios(
+        `http://localhost:5000/cars?limit=${pageItem}&pageNum=${page}`
+      );
       if (data?.success) {
         setInventories(data.data);
+        const count = data.count;
+        const pages = Math.ceil(count / 5);
+        setCountPage(pages);
         setLoading(false);
       } else {
         toast.error(data?.error);
       }
     };
     runData();
-  }, []);
+  }, [pageItem, page]);
 
   const columns = useMemo(
     () => [
@@ -30,7 +37,7 @@ const AllInventory = () => {
         accessor: "_id",
       },
       {
-        Header: "Name",
+        Header: "Car Name",
         accessor: "name",
       },
       {
@@ -65,9 +72,20 @@ const AllInventory = () => {
 
   return (
     <div className="inventories-container">
-      <h2>All Inventories ({inventories?.length})</h2>
+      <h2>All Inventories </h2>
 
       <DataTables columns={columns} data={inventories}></DataTables>
+      <div className="pagination">
+        {[...Array(countPage).keys()].map((num) => (
+          <div
+            onClick={() => setPage(num)}
+            className="num-pg btn"
+            keys={num._id}
+          >
+            {num + 1}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

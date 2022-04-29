@@ -29,7 +29,15 @@ tr:nth-child(even) {
 .inventory-table table .btn {
   padding: 10px;
 }
-
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.num-pg {
+  font-size: 20px;
+}
 @media (max-width: 677px) {
   .inventory-table table {
     width: 100%;
