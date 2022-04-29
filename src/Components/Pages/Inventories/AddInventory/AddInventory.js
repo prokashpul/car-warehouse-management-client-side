@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../../firebase/firebase.init";
-import title from "../../../../Utilitis/dynamicName";
+import title from "../../../../Utilities/dynamicName";
 import "./AddInventory.css";
 const AddInventory = () => {
   title("Create new inventory");

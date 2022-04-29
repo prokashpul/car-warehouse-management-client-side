@@ -1,0 +1,40 @@
+.inventories-container {
+  text-align: center;
+  margin-top: 20px;
+}
+.inventory-table {
+  margin: 30px;
+  overflow-x: auto;
+}
+.inventory-table table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.inventory-table th {
+  border: 1px solid var(--primary-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  text-align: center;
+  padding: 10px;
+}
+.inventory-table td {
+  border: 1px solid var(--secondary-color);
+  text-align: center;
+  padding: 10px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.inventory-table table .btn {
+  padding: 10px;
+}
+
+@media (max-width: 677px) {
+  .inventory-table table {
+    width: 100%;
+  }
+  .inventory-table {
+    overflow-x: auto;
+  }
+}

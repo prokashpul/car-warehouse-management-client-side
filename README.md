@@ -15,6 +15,7 @@
 > - npm install react-hook-form
 > - npm install react-hook-form
 > - npm install --save react-toastify
+> - npm i react-table
 
 ## `About This Project :`
 

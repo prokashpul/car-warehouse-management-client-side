@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./ErrorPage.css";
 import { HiArrowLeft } from "react-icons/hi";
-import title from "../../../Utilitis/dynamicName";
+import title from "../../../Utilities/dynamicName";
 const ErrorPage = () => {
   const navigate = useNavigate();
   title("Page not found | carManager");

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import title from "../../../../Utilitis/dynamicName";
+import title from "../../../../Utilities/dynamicName";
 import { HiOutlineViewGrid, HiPencilAlt, HiCloud } from "react-icons/hi";
 import "./Inventories.css";
 import { useAuthState } from "react-firebase-hooks/auth";
