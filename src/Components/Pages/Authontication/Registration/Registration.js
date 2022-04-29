@@ -7,10 +7,12 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../../firebase/firebase.init";
+import title from "../../../../Utilitis/dynamicName";
 import SocialLogin from "../Login/SocialLogin.js/SocialLogin";
 import "./Registration.css";
 
 const Registration = () => {
+  title("Create new account | carManager");
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile] = useUpdateProfile(auth);

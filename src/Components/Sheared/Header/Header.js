@@ -61,7 +61,10 @@ const Header = () => {
               <li onClick={() => signOut(auth)} className="nav-item ">
                 <NavLink to="/login">
                   Log Out (
-                  {user?.displayName ? user?.displayName.slice(0, 3) : "User"})
+                  {user?.displayName.length >= 3
+                    ? user?.displayName.slice(0, 3)
+                    : user?.displayName}
+                  )
                 </NavLink>
               </li>
             </>

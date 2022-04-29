@@ -1,8 +1,10 @@
 import React from "react";
+import title from "../../../../../Utilitis/dynamicName";
 import FormLogin from "../FormLogin/FormLogin";
 import SocialLogin from "../SocialLogin.js/SocialLogin";
 import "./Login.css";
 const Login = () => {
+  title("Log in now | carManager");
   return (
     <div className="log-in container">
       <div className="login-form">
