@@ -1,5 +1,8 @@
 import React from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -13,7 +16,8 @@ const FormLogin = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const [token] = useToken(user);
-
+  const [sendPasswordResetEmail, sending, error1] =
+    useSendPasswordResetEmail(auth);
   const {
     register,
     handleSubmit,
@@ -32,7 +36,20 @@ const FormLogin = () => {
     navigate(from, { replace: true });
     toast("welcome to webcarmanger");
   }
-
+  // recveryEmail
+  const recoveryEmail = async () => {
+    const email = document.getElementById("email").value;
+    if (email) {
+      await sendPasswordResetEmail(email);
+      if (error1 || sending) {
+        toast(error1?.message);
+      } else {
+        toast("email send.");
+      }
+    } else {
+      toast("please file upp emil field");
+    }
+  };
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -41,6 +58,7 @@ const FormLogin = () => {
           <input
             type="email"
             id="email"
+            name="email"
             placeholder="Email"
             {...register("email", {
               required: "You must specify a email field",
@@ -69,7 +87,9 @@ const FormLogin = () => {
           )}
         </div>
         {loading && <p>loading....</p>}
-        <Link to="/register">Forget password ?</Link>
+        <div className="forget-password" onClick={recoveryEmail}>
+          Forget password ?
+        </div>
         <input className="btn" type="submit" value="Log In" />
       </form>
       <p className="form-link">
