@@ -87,7 +87,7 @@ const MyItems = () => {
 
   return (
     <div className="inventories-container">
-      <h2>All Inventories </h2>
+      <h2>My Inventories </h2>
 
       <DataTables columns={columns} data={inventories}></DataTables>
     </div>
