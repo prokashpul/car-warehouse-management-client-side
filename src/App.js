@@ -36,14 +36,25 @@ function App() {
         <Route path="/inventories" element={<Inventories></Inventories>}>
           <Route
             path="/inventories/add-inventory"
-            element={<AddInventory></AddInventory>}
+            element={
+              <RequireAuth>
+                <AddInventory />
+              </RequireAuth>
+            }
           ></Route>
           <Route path="/inventories/" element={<AllInventory />}></Route>
           <Route
             path="/inventories/all-inventory"
             element={<AllInventory />}
           ></Route>
-          <Route path="/inventories/my-items" element={<MyItems />}></Route>
+          <Route
+            path="/inventories/my-items"
+            element={
+              <RequireAuth>
+                <MyItems />
+              </RequireAuth>
+            }
+          ></Route>
         </Route>
         <Route path="*" element={<ErrorPage></ErrorPage>} />
       </Routes>
