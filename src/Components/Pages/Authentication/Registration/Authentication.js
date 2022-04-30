@@ -8,6 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../../firebase/firebase.init";
 import title from "../../../../Utilities/dynamicName";
+import useToken from "../../../Hooks/JwtToken";
 import SocialLogin from "../Login/SocialLogin.js/SocialLogin";
 import "./Registration.css";
 
@@ -19,7 +20,7 @@ const Registration = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-
+  const [token] = useToken(user);
   const {
     register,
     handleSubmit,
@@ -40,7 +41,7 @@ const Registration = () => {
   if (error) {
     toast(error.message);
   }
-  if (user) {
+  if (token) {
     toast("successfully");
     navigate(from, { replace: true });
   }

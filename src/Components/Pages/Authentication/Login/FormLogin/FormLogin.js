@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../../../firebase/firebase.init";
+import useToken from "../../../../Hooks/JwtToken";
 import "./FormLogin.css";
 const FormLogin = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const FormLogin = () => {
     useSignInWithEmailAndPassword(auth);
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  const [token] = useToken(user);
 
   const {
     register,
@@ -26,7 +28,7 @@ const FormLogin = () => {
   if (error) {
     toast(error.message);
   }
-  if (user) {
+  if (token) {
     navigate(from, { replace: true });
     toast("welcome to webcarmanger");
   }
