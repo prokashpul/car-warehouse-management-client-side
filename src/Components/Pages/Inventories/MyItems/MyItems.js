@@ -8,7 +8,7 @@ import Spinner from "../../../Spinner/Spinner";
 import DataTables from "../AllInventory/DataTable/DataTables";
 
 const MyItems = () => {
-  title("Manage All Inventories");
+  title("Manage My Inventories");
   const [inventories, setInventories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [user] = useAuthState(auth);

@@ -4,6 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Login from "./Components/Pages/Authentication/Login/Login/Authentication";
 import Registration from "./Components/Pages/Authentication/Registration/Authentication";
+import AddBlog from "./Components/Pages/Blog/addBlog/AddBlog";
+import Blog from "./Components/Pages/Blog/Blog";
 
 import ErrorPage from "./Components/Pages/Error/ErrorPage";
 import Home from "./Components/Pages/Home/Home/Home";
@@ -25,6 +27,7 @@ function App() {
         <Route path="/" element={<Home></Home>} />
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Registration />} />
+        <Route path="/blog" element={<Blog />} />
         <Route
           path="/update/:inventoryId"
           element={
@@ -39,6 +42,14 @@ function App() {
             element={
               <RequireAuth>
                 <AddInventory />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route
+            path="/inventories/add-blog"
+            element={
+              <RequireAuth>
+                <AddBlog />
               </RequireAuth>
             }
           ></Route>

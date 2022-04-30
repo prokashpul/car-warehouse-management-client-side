@@ -50,6 +50,17 @@ const Inventories = () => {
                     </span>
                   </NavLink>
                 </li>
+                <li className="item-item">
+                  <NavLink
+                    className={`nav-link ${({ isActive }) =>
+                      isActive ? "active" : ""}`}
+                    to="/inventories/add-blog"
+                  >
+                    <span>
+                      <HiPencilAlt /> Add Blog
+                    </span>
+                  </NavLink>
+                </li>
               </>
             )}
           </ul>
