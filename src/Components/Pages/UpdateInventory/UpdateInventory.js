@@ -11,7 +11,7 @@ const UpdateInventory = () => {
     const getSingleItem = async () => {
       try {
         const { data } = await axios(
-          `http://localhost:5000/inventory/${inventoryId}`
+          `https://car-manager-server.herokuapp.cominventory/${inventoryId}`
         );
         setInventory(data);
       } catch (error) {
