@@ -8,7 +8,7 @@ const useToken = (user) => {
       const email = user?.user?.email;
       if (email) {
         const { data } = await axios.post(
-          "https://car-manager-server.herokuapp.comlogin",
+          "https://car-manager-server.herokuapp.com/login",
           {
             email,
           }
