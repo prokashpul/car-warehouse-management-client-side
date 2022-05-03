@@ -1,15 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
-import auth from "../../../firebase/firebase.init";
+
 import title from "../../../Utilities/dynamicName";
 import "./UpdateInventory.css";
 const UpdateInventory = () => {
   const [inventory, setInventory] = useState({});
   const { inventoryId } = useParams();
+  const [delever ,setDelever] = useState(0)
 
   useEffect(() => {
     const getSingleItem = async () => {
@@ -25,6 +26,7 @@ const UpdateInventory = () => {
     getSingleItem();
   }, [inventoryId]);
   title(inventory.name);
+ console.log(inventory.quantity)
 
   const {
     register,
@@ -33,20 +35,42 @@ const UpdateInventory = () => {
     reset,
   } = useForm();
   const onSubmit = (data) => {
-    fetch(`https://car-manager-server.herokuapp.com/cars/${inventory?._id}`, {
-      method: "PUT",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(
-        (data.quantity = inventory.quantity + data.quantity)
-      ),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        alert("create successfully");
-      });
+   const add =async ()=>{
+   const addQuerry = parseInt(inventory.quantity) + parseInt(data.quantity);
+   inventory.quantity = addQuerry;
+     
+    try {
+      const url =`http://localhost:5000/cars/${inventory?._id}`
+      const {data}=await axios.put(url,{inventory})
+      console.log(data)
+
+    }catch (error) {
+        toast(error.message);
+      }
+   }
+   add()
     reset();
   };
+const handelDelever =()=>{
+  const add =async ()=>{
+    if(inventory.quantity > 0){
+  const addQuerry = parseInt(inventory.quantity) - 1;
+  inventory.quantity = addQuerry;
+     
+    try {
+      const url =`http://localhost:5000/cars/${inventory?._id}`
+      const {data} = await axios.put(url,{inventory})
+      console.log(data)
 
+    }catch (error) {
+        toast(error.message);
+      }
+   }
+  
+   setDelever(inventory.quantity)
+  }
+  add()
+}
   return (
     <div className="container">
       <div className="update-inventory">
@@ -56,16 +80,17 @@ const UpdateInventory = () => {
         <p>{inventory?.des}</p>
         <strong>Price: ${inventory?.price}</strong>
         <br />
-        <strong>In Stock: {inventory?.quantity}</strong>
+        <strong>In Stock: {inventory.quantity === 0? "Sold Out"  : inventory.quantity }</strong>
         <br />
         <strong>Supplier: {inventory?.supplier}</strong>
         <div className="update-form">
-          <button className="btn">Deliver</button>
+          <button onClick={handelDelever} className="btn">Deliver</button>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
               <input
                 type="number"
                 id="quantity"
+                name="quantity"
                 placeholder="Add Quantity"
                 min="0"
                 {...register("quantity", {
