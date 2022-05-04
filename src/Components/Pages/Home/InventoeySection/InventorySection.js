@@ -13,7 +13,7 @@ const InventorySection = () => {
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
-      const url = `https://car-manager-server.herokuapp.com/cars?limit=6`;
+      const url = `https://hidden-lake-88703.herokuapp.com/cars?limit=6`;
       const { data } = await axios(url);
       if (data?.success) {
         setInventories(data.data);

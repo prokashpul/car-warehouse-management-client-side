@@ -3,7 +3,7 @@
 > - Live site https://webcarmanager.web.app/
 > - server git link - https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-prokashpul
 > - clint site git link - https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-prokashpul
-> - heroku server - https://car-manager-server.herokuapp.com/
+> - heroku server - https://hidden-lake-88703.herokuapp.com/
 > - stackoverflow Answer- https://stackoverflow.com/a/72060611/18097290
 
 ## `Technology Used :`
@@ -21,3 +21,11 @@
 ## `About This Project :`
 
 > - one route to other route page scroll to top
+> - home page inventory section dynamik and update option
+> - my item option only show login user inventory item
+> - all inventory page show item display table and item delete option
+> - add inventory page to post inventory
+> - blog page show question and answer
+> - all inventory page add pagination
+> - email and password and google login with firebase
+> - email varification and recovery password

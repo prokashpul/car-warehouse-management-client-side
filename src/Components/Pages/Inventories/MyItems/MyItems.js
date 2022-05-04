@@ -16,7 +16,7 @@ const MyItems = () => {
     const runData = async () => {
       setLoading(true);
       const { data } = await axios(
-        `https://car-manager-server.herokuapp.com/cars?limit=`
+        `https://hidden-lake-88703.herokuapp.com/cars?limit=`
       );
       if (data?.success) {
         const myData = data.data.filter((myInv) => myInv.email === user.email);
@@ -32,7 +32,7 @@ const MyItems = () => {
   const deleteItem = (id) => {
     const proceed = window.confirm("Are you agree to delete ?");
     if (proceed) {
-      const url = `https://car-manager-server.herokuapp.com/cars/${id}`;
+      const url = `https://hidden-lake-88703.herokuapp.com/cars/${id}`;
       fetch(url, {
         method: "DELETE",
       })

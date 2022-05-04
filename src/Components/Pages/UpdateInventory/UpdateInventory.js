@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 
@@ -11,12 +11,13 @@ const UpdateInventory = () => {
   const [inventory, setInventory] = useState({});
   const { inventoryId } = useParams();
   const [delever ,setDelever] = useState(0)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getSingleItem = async () => {
       try {
         const { data } = await axios(
-          `https://car-manager-server.herokuapp.com/inventory/${inventoryId}`
+          `https://hidden-lake-88703.herokuapp.com/inventory/${inventoryId}`
         );
         setInventory(data);
       } catch (error) {
@@ -40,7 +41,7 @@ const UpdateInventory = () => {
    inventory.quantity = addQuerry;
      
     try {
-      const url =`http://localhost:5000/cars/${inventory?._id}`
+      const url =`https://hidden-lake-88703.herokuapp.com/cars/${inventory?._id}`
       const {data}=await axios.put(url,{inventory})
       console.log(data)
 
@@ -58,7 +59,7 @@ const handelDelever =()=>{
   inventory.quantity = addQuerry;
      
     try {
-      const url =`http://localhost:5000/cars/${inventory?._id}`
+      const url =`https://hidden-lake-88703.herokuapp.com/cars/${inventory?._id}`
       const {data} = await axios.put(url,{inventory})
       console.log(data)
 
@@ -104,6 +105,14 @@ const handelDelever =()=>{
             )}
           </form>
         </div>
+        <div className="inventory-bottom">
+        <button
+          className="btn"
+          onClick={() => navigate("/inventories/all-inventory")}
+        >
+          Manage all inventory
+        </button>
+      </div>
       </div>
     </div>
   );
