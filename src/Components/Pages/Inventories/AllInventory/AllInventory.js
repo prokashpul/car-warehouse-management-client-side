@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import title from "../../../../Utilities/dynamicName";
 import Spinner from "../../../Spinner/Spinner";
@@ -12,6 +13,7 @@ const AllInventory = () => {
   const [page, setPage] = useState(0);
   const [pageItem] = useState(5);
   const [countPage, setCountPage] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const runData = async () => {
@@ -46,6 +48,7 @@ const AllInventory = () => {
         });
     }
   };
+
   const columns = useMemo(
     () => [
       {
@@ -56,7 +59,12 @@ const AllInventory = () => {
         Header: "Image",
         accessor: "img",
         Cell: ({ cell: { value } }) => (
-          <img src={value} alt={value} height="70" width="100%" />
+          <img
+            src={value ? value : "https://i.ibb.co/SdvvYNp/no-image.jpg"}
+            alt={value}
+            height="70"
+            width="100%"
+          />
         ),
       },
       {
@@ -75,13 +83,21 @@ const AllInventory = () => {
         Header: "Delete",
         accessor: "_id",
         Cell: ({ cell: { value } }) => (
-          <button onClick={() => deleteItem(value)} className="btn">
-            Delete
-          </button>
+          <>
+            <button
+              onClick={() => navigate(`/update/${value}`)}
+              className="btn"
+            >
+              update
+            </button>
+            <button onClick={() => deleteItem(value)} className="btn">
+              Delete
+            </button>
+          </>
         ),
       },
     ],
-    [deleteItem]
+    [deleteItem, navigate]
   );
   if (loading) {
     return <Spinner></Spinner>;
@@ -92,6 +108,7 @@ const AllInventory = () => {
       <h2>All Inventories </h2>
 
       <DataTables columns={columns} data={inventories}></DataTables>
+      {inventories?.length === 0 && <p className="not-found">No Item Found</p>}
       <div className="pagination">
         {[...Array(countPage).keys()].map((num) => (
           <div

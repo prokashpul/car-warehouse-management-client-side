@@ -1,17 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../../firebase/firebase.init";
 import title from "../../../../Utilities/dynamicName";
 import Spinner from "../../../Spinner/Spinner";
 import DataTables from "../AllInventory/DataTable/DataTables";
+import "./MyItem.css";
 
 const MyItems = () => {
   title("Manage My Inventories");
   const [inventories, setInventories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
   useEffect(() => {
     const runData = async () => {
       setLoading(true);
@@ -54,7 +57,12 @@ const MyItems = () => {
         Header: "Image",
         accessor: "img",
         Cell: ({ cell: { value } }) => (
-          <img src={value} alt={value} height="70" width="100%" />
+          <img
+            src={value ? value : "https://i.ibb.co/SdvvYNp/no-image.jpg"}
+            alt={value}
+            height="70"
+            width="100%"
+          />
         ),
       },
       {
@@ -73,13 +81,21 @@ const MyItems = () => {
         Header: "Delete",
         accessor: "_id",
         Cell: ({ cell: { value } }) => (
-          <button onClick={() => deleteItem(value)} className="btn">
-            Delete
-          </button>
+          <>
+            <button
+              onClick={() => navigate(`/update/${value}`)}
+              className="btn"
+            >
+              Update
+            </button>
+            <button onClick={() => deleteItem(value)} className="btn">
+              Delete
+            </button>
+          </>
         ),
       },
     ],
-    [deleteItem]
+    [deleteItem, navigate]
   );
   if (loading) {
     return <Spinner></Spinner>;
@@ -90,6 +106,7 @@ const MyItems = () => {
       <h2>My Inventories </h2>
 
       <DataTables columns={columns} data={inventories}></DataTables>
+      {inventories?.length === 0 && <p className="not-found">No Item Found</p>}
     </div>
   );
 };

@@ -18,7 +18,7 @@ const InventoryItem = ({ inventory }) => {
         <h3>{name}</h3>
         <p>{des.length >= 30 ? des.slice(0, 30) : des}</p>
         <h4>
-          Price:<span>${price}</span>{" "}
+          Price:<span>${price?price:"https://i.ibb.co/SdvvYNp/no-image.jpg"}</span>{" "}
         </h4>
         <strong>
           Stock: <span>{quantity} </span>

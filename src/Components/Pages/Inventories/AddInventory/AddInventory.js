@@ -58,7 +58,9 @@ const AddInventory = () => {
                 })}
               />
 
-              {errors.des && <p className="form-error">{errors.des.message}</p>}
+              {errors.name && (
+                <p className="form-error">{errors.name.message}</p>
+              )}
             </div>
             <div className="form-group">
               <textarea

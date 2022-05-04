@@ -59,6 +59,7 @@
     left: 0;
     transition: var(--transition);
     opacity: 0;
+    z-index: 999;
   }
   .nav-menu .nav-items a {
     color: var(--white-color);

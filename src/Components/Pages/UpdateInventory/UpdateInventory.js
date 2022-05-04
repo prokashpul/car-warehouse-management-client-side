@@ -79,7 +79,7 @@ const handelDelever =()=>{
         <h2>{inventory?.name}</h2>
         <strong>Car ID: {inventory?._id}</strong>
         <p>{inventory?.des}</p>
-        <strong>Price: ${inventory?.price}</strong>
+        <strong>Price: ${inventory?.price?inventory?.price:"https://i.ibb.co/SdvvYNp/no-image.jpg"}</strong>
         <br />
         <strong>In Stock: {inventory.quantity === 0? "Sold Out"  : inventory.quantity }</strong>
         <br />

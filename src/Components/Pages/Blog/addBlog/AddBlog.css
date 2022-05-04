@@ -1,0 +1,12 @@
+.post-container {
+  display: block;
+}
+.bolg-admin {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 50px;
+}
