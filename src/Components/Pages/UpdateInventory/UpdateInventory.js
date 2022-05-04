@@ -7,19 +7,23 @@ import { useForm } from "react-hook-form";
 
 import title from "../../../Utilities/dynamicName";
 import "./UpdateInventory.css";
+import Spinner from "../../Spinner/Spinner";
 const UpdateInventory = () => {
   const [inventory, setInventory] = useState({});
   const { inventoryId } = useParams();
-  const [delever ,setDelever] = useState(0)
-  const navigate = useNavigate()
+  const [delever, setDelever] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getSingleItem = async () => {
+      setLoading(true);
       try {
         const { data } = await axios(
           `https://hidden-lake-88703.herokuapp.com/inventory/${inventoryId}`
         );
         setInventory(data);
+        setLoading(false);
       } catch (error) {
         toast(error.message);
       }
@@ -27,7 +31,6 @@ const UpdateInventory = () => {
     getSingleItem();
   }, [inventoryId]);
   title(inventory.name);
- console.log(inventory.quantity)
 
   const {
     register,
@@ -36,42 +39,43 @@ const UpdateInventory = () => {
     reset,
   } = useForm();
   const onSubmit = (data) => {
-   const add =async ()=>{
-   const addQuerry = parseInt(inventory.quantity) + parseInt(data.quantity);
-   inventory.quantity = addQuerry;
-     
-    try {
-      const url =`https://hidden-lake-88703.herokuapp.com/cars/${inventory?._id}`
-      const {data}=await axios.put(url,{inventory})
-      console.log(data)
+    const add = async () => {
+      const addQuerry = parseInt(inventory.quantity) + parseInt(data.quantity);
+      inventory.quantity = addQuerry;
 
-    }catch (error) {
+      try {
+        const url = `https://hidden-lake-88703.herokuapp.com/cars/${inventory?._id}`;
+        const { data } = await axios.put(url, { inventory });
+        // console.log(data);
+      } catch (error) {
         toast(error.message);
       }
-   }
-   add()
+    };
+    add();
     reset();
   };
-const handelDelever =()=>{
-  const add =async ()=>{
-    if(inventory.quantity > 0){
-  const addQuerry = parseInt(inventory.quantity) - 1;
-  inventory.quantity = addQuerry;
-     
-    try {
-      const url =`https://hidden-lake-88703.herokuapp.com/cars/${inventory?._id}`
-      const {data} = await axios.put(url,{inventory})
-      console.log(data)
+  const handelDelever = () => {
+    const add = async () => {
+      if (inventory.quantity > 0) {
+        const addQuerry = parseInt(inventory.quantity) - 1;
+        inventory.quantity = addQuerry;
 
-    }catch (error) {
-        toast(error.message);
+        try {
+          const url = `https://hidden-lake-88703.herokuapp.com/cars/${inventory?._id}`;
+          const { data } = await axios.put(url, { inventory });
+        } catch (error) {
+          toast(error.message);
+        }
       }
-   }
-  
-   setDelever(inventory.quantity)
+
+      setDelever(inventory.quantity);
+    };
+    add();
+  };
+
+  if (loading) {
+    return <Spinner></Spinner>;
   }
-  add()
-}
   return (
     <div className="container">
       <div className="update-inventory">
@@ -79,13 +83,22 @@ const handelDelever =()=>{
         <h2>{inventory?.name}</h2>
         <strong>Car ID: {inventory?._id}</strong>
         <p>{inventory?.des}</p>
-        <strong>Price: ${inventory?.price?inventory?.price:"https://i.ibb.co/SdvvYNp/no-image.jpg"}</strong>
+        <strong>
+          Price: $
+          {inventory?.price
+            ? inventory?.price
+            : "https://i.ibb.co/SdvvYNp/no-image.jpg"}
+        </strong>
         <br />
-        <strong>In Stock: {inventory.quantity === 0? "Sold Out"  : inventory.quantity }</strong>
+        <strong>
+          In Stock: {inventory.quantity === 0 ? "Sold Out" : inventory.quantity}
+        </strong>
         <br />
         <strong>Supplier: {inventory?.supplier}</strong>
         <div className="update-form">
-          <button onClick={handelDelever} className="btn">Deliver</button>
+          <button onClick={handelDelever} className="btn">
+            Deliver
+          </button>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
               <input
@@ -106,13 +119,13 @@ const handelDelever =()=>{
           </form>
         </div>
         <div className="inventory-bottom">
-        <button
-          className="btn"
-          onClick={() => navigate("/inventories/all-inventory")}
-        >
-          Manage all inventory
-        </button>
-      </div>
+          <button
+            className="btn"
+            onClick={() => navigate("/inventories/all-inventory")}
+          >
+            Manage all inventory
+          </button>
+        </div>
       </div>
     </div>
   );

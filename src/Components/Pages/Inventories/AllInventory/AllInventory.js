@@ -69,7 +69,7 @@ const AllInventory = () => {
       },
       {
         Header: "$ Price",
-        accessor: "price",
+        accessor: `price`,
       },
       {
         Header: "Quantity",
