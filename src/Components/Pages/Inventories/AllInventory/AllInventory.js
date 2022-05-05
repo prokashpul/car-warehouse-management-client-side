@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { HiPencilAlt, HiOutlineTrash } from "react-icons/hi";
 import title from "../../../../Utilities/dynamicName";
 import Spinner from "../../../Spinner/Spinner";
 import DataTables from "./DataTable/DataTables";
@@ -88,10 +89,10 @@ const AllInventory = () => {
               onClick={() => navigate(`/update/${value}`)}
               className="btn"
             >
-              update
+              <HiPencilAlt /> update
             </button>
             <button onClick={() => deleteItem(value)} className="btn">
-              Delete
+              <HiOutlineTrash /> Delete
             </button>
           </>
         ),

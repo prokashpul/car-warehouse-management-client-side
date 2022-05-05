@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { HiOutlinePencilAlt, HiOutlineTrash } from "react-icons/hi";
 import auth from "../../../../firebase/firebase.init";
 import title from "../../../../Utilities/dynamicName";
 import Spinner from "../../../Spinner/Spinner";
@@ -86,10 +87,10 @@ const MyItems = () => {
               onClick={() => navigate(`/update/${value}`)}
               className="btn"
             >
-              Update
+              <HiOutlinePencilAlt /> Update
             </button>
             <button onClick={() => deleteItem(value)} className="btn">
-              Delete
+              <HiOutlineTrash /> Delete
             </button>
           </>
         ),

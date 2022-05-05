@@ -1,12 +1,22 @@
 .header {
   background: var(--white-color);
-  box-shadow: var(--shadow);
   z-index: 999;
+  transition: var(--transition);
+  background-color: transparent;
+}
+.window-scroll {
+  position: fixed;
+  background-color: var(--secondary-color);
+  box-shadow: var(--shadow);
+  color: var(--white-color);
+  width: 100%;
+  top: 0;
 }
 .nav-menu {
   height: 80px;
   display: flex;
   justify-content: space-between;
+
   align-items: center;
   padding: 0 20px;
 }
@@ -74,7 +84,8 @@
     cursor: pointer;
   }
   .nav-items.open-menu {
-    top: 80px;
+    top: 78px;
     opacity: 1;
+    border-top: 1px solid var(--primary-color);
   }
 }

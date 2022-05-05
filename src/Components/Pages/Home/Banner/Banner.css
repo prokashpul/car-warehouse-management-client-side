@@ -6,6 +6,8 @@
   background-clip: border-box;
   background-attachment: fixed;
   height: 500px;
+  margin-top: -80px;
+  padding-top: 60px;
 }
 .banner-container {
   display: flex;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import { HiTruck, HiPencilAlt } from "react-icons/hi";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
@@ -59,7 +59,7 @@ const UpdateInventory = () => {
       if (inventory.quantity > 0) {
         const addQuerry = parseInt(inventory.quantity) - 1;
         inventory.quantity = addQuerry;
-
+        setDelever(inventory.quantity);
         try {
           const url = `https://hidden-lake-88703.herokuapp.com/cars/${inventory?._id}`;
           const { data } = await axios.put(url, { inventory });
@@ -67,8 +67,6 @@ const UpdateInventory = () => {
           toast(error.message);
         }
       }
-
-      setDelever(inventory.quantity);
     };
     add();
   };
@@ -97,7 +95,7 @@ const UpdateInventory = () => {
         <strong>Supplier: {inventory?.supplier}</strong>
         <div className="update-form">
           <button onClick={handelDelever} className="btn">
-            Deliver
+            <HiTruck /> Deliver
           </button>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
@@ -111,7 +109,10 @@ const UpdateInventory = () => {
                   required: "You must specify a quantity",
                 })}
               />
-              <input className="btn" type="submit" value="Update" />
+
+              <button className="btn" type="submit">
+                <HiPencilAlt /> Update
+              </button>
             </div>
             {errors.quantity && (
               <p className="form-error">{errors.quantity.message}</p>

@@ -11,6 +11,12 @@ const Header = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
+  // sticky nav
+  window.addEventListener("scroll", () => {
+    document
+      .querySelector("nav")
+      .classList.toggle("window-scroll", window.scrollY > 100);
+  });
   return (
     <header className="header">
       <nav className="nav-menu">
