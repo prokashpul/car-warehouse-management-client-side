@@ -30,3 +30,4 @@
 > - all inventory page add pagination
 > - email and password and google login with firebase
 > - email varification and recovery password
+> - nav menu scroll fixed and color change

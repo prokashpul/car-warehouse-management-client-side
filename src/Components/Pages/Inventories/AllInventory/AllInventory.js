@@ -12,7 +12,7 @@ const AllInventory = () => {
   const [inventories, setInventories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(0);
-  const [pageItem] = useState(5);
+  const [pageItem] = useState(6);
   const [countPage, setCountPage] = useState(0);
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ const AllInventory = () => {
       if (data?.success) {
         setInventories(data.data);
         const count = data.count;
-        const pages = Math.ceil(count / 5);
+        const pages = Math.ceil(count / 6);
         setCountPage(pages);
         setLoading(false);
       } else {
