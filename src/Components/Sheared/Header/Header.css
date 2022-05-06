@@ -63,6 +63,7 @@
   .nav-menu .nav-items {
     position: absolute;
     top: -500%;
+    display: none;
     flex-direction: column;
     padding: 30px 0;
     justify-content: center;
@@ -89,6 +90,7 @@
   }
   .nav-items.open-menu {
     top: 78px;
+    display: flex;
     opacity: 1;
     border-top: 1px solid var(--primary-color);
   }
