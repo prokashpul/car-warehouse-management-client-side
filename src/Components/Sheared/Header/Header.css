@@ -11,6 +11,7 @@
   color: var(--white-color);
   width: 100%;
   top: 0;
+  z-index: 999;
 }
 .nav-menu {
   height: 80px;
@@ -40,6 +41,9 @@
   padding: 5px 12px;
   color: var(--white-color);
   border-radius: var(--radius);
+}
+.window-scroll a:hover {
+  color: var(--white-color);
 }
 .humber-menu {
   display: none;
