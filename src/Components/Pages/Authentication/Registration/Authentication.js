@@ -131,7 +131,7 @@ const Registration = () => {
               <input className="btn" type="submit" value="Sin Up" />
             </form>
             <p className="form-link">
-              Already have an account ? <Link to="/login">Sin Up</Link>{" "}
+              Already have an account ? <Link to="/login">Sin In</Link>{" "}
             </p>
           </div>
           <SocialLogin />
