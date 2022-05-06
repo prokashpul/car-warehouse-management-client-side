@@ -15,6 +15,11 @@
   align-items: center;
   margin-bottom: 30px;
 }
+@media (max-width: 920px) {
+  .home-inventory {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 @media (max-width: 677px) {
   .home-inventory {
     grid-template-columns: 1fr;
