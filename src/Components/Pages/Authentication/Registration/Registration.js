@@ -17,9 +17,9 @@ const Registration = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile] = useUpdateProfile(auth);
-  const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const [token] = useToken(user);
   const {
     register,
@@ -32,7 +32,6 @@ const Registration = () => {
       await createUserWithEmailAndPassword(data?.email, data?.password);
       const name = data?.name;
       await updateProfile({ displayName: name });
-      console.log(data.name);
     } else {
       toast("Password not mashed");
     }

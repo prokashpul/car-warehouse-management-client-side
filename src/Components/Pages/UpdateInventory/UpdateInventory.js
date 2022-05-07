@@ -111,7 +111,7 @@ const UpdateInventory = () => {
               />
 
               <button className="btn" type="submit">
-                <HiPencilAlt /> Update
+                <HiPencilAlt /> Add
               </button>
             </div>
             {errors.quantity && (
