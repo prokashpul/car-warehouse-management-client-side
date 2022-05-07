@@ -4,7 +4,7 @@ const SingleBlog = ({ blog }) => {
   const { name, img, des, title } = blog || {};
   console.log(blog);
   return (
-    <div className="single-blog">
+    <div data-aos="fade-up" className="single-blog">
       <img src={img} alt="" />
       <div className="blog-body">
         <h3>{title}</h3>

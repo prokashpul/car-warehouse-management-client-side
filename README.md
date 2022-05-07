@@ -18,16 +18,17 @@
 > - npm install --save react-toastify
 > - npm i react-table
 > - npm install react-slick --save
+> - npm install aos --save
 
 ## `About This Project :`
 
 > - one route to other route page scroll to top
-> - home page inventory section dynamik and update option
+> - home page inventory section dynamic and update option
 > - my item option only show login user inventory item
 > - all inventory page show item display table and item delete option
 > - add inventory page to post inventory
 > - blog page show question and answer
 > - all inventory page add pagination
 > - email and password and google login with firebase
-> - email varification and recovery password
+> - email verification and recovery password
 > - nav menu scroll fixed and color change

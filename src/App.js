@@ -6,20 +6,21 @@ import Login from "./Components/Pages/Authentication/Login/Login/Login";
 import Registration from "./Components/Pages/Authentication/Registration/Authentication";
 import AddBlog from "./Components/Pages/Blog/addBlog/AddBlog";
 import Blog from "./Components/Pages/Blog/Blog";
-
 import ErrorPage from "./Components/Pages/Error/ErrorPage";
 import Home from "./Components/Pages/Home/Home/Home";
 import AddInventory from "./Components/Pages/Inventories/AddInventory/AddInventory";
 import AllInventory from "./Components/Pages/Inventories/AllInventory/AllInventory";
-
 import Inventories from "./Components/Pages/Inventories/Inventories/Inventories";
 import MyItems from "./Components/Pages/Inventories/MyItems/MyItems";
 import UpdateInventory from "./Components/Pages/UpdateInventory/UpdateInventory";
 import RequireAuth from "./Components/RequirAuth/RequirAuth";
 import Footer from "./Components/Sheared/Footer/Footer";
 import Header from "./Components/Sheared/Header/Header";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
+  AOS.init();
   return (
     <>
       <Header></Header>
