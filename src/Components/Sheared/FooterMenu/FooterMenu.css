@@ -42,6 +42,12 @@
   width: 60px;
   margin: 5px;
 }
+.address-list a {
+  color: var(--white-color);
+}
+.address-list a:hover {
+  color: var(--primary-color);
+}
 @media (max-width: 677px) {
   .footer-menu {
     height: auto;

@@ -40,12 +40,13 @@ const UpdateInventory = () => {
   } = useForm();
   const onSubmit = (data) => {
     const add = async () => {
-      const addQuerry = parseInt(inventory.quantity) + parseInt(data.quantity);
-      inventory.quantity = addQuerry;
+      const addQuantity =
+        parseInt(inventory.quantity) + parseInt(data.quantity);
+      inventory.quantity = addQuantity;
 
       try {
         const url = `https://hidden-lake-88703.herokuapp.com/cars/${inventory?._id}`;
-        const { data } = await axios.put(url, { inventory });
+        await axios.put(url, { inventory });
         // console.log(data);
       } catch (error) {
         toast(error.message);
@@ -57,12 +58,12 @@ const UpdateInventory = () => {
   const handelDelever = () => {
     const add = async () => {
       if (inventory.quantity > 0) {
-        const addQuerry = parseInt(inventory.quantity) - 1;
-        inventory.quantity = addQuerry;
+        const addQuantity = parseInt(inventory.quantity) - 1;
+        inventory.quantity = addQuantity;
         setDelever(inventory.quantity);
         try {
           const url = `https://hidden-lake-88703.herokuapp.com/cars/${inventory?._id}`;
-          const { data } = await axios.put(url, { inventory });
+          await axios.put(url, { inventory });
         } catch (error) {
           toast(error.message);
         }

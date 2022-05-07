@@ -8,16 +8,22 @@ const FooterMenu = () => {
         <div className="contact">
           <h3>CONTACT US</h3>
           <address className="address">
-            <li className="address-list">
-              <HiLocationMarker /> 31 Segunbagicha Dahaka,1000
-            </li>
-            <li className="address-list">
-              <HiMail /> prokashpul2@gmail.com
-            </li>
-            <li className="address-list">
-              <HiPhoneOutgoing />
-              +8801642133102
-            </li>
+            <ul>
+              <li className="address-list">
+                <HiLocationMarker /> 31 Segunbagicha Dahaka,1000
+              </li>
+              <li className="address-list">
+                <HiMail />
+                <a href="mailto:prokashpul2@gmail.com">
+                  {" "}
+                  prokashpul2@gmail.com
+                </a>
+              </li>
+              <li className="address-list">
+                <HiPhoneOutgoing />
+                <a href="tel:+8801642133102">+8801642133102</a>
+              </li>
+            </ul>
           </address>
         </div>
         <div className="footer-link">

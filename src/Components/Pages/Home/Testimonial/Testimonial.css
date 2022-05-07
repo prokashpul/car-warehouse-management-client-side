@@ -1,6 +1,7 @@
 .testimonial {
   text-align: center;
   box-shadow: var(--shadow);
+  overflow: hidden;
   padding: 30px 0;
 }
 .testimonial h2 {

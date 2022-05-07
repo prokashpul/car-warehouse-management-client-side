@@ -2,7 +2,6 @@ import React from "react";
 
 const SingleBlog = ({ blog }) => {
   const { name, img, des, title } = blog || {};
-  console.log(blog);
   return (
     <div data-aos="fade-up" className="single-blog">
       <img src={img} alt="" />
