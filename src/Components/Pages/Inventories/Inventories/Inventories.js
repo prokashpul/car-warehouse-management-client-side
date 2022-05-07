@@ -35,7 +35,7 @@ const Inventories = () => {
                     to="/inventories/add-inventory"
                   >
                     <span>
-                      <HiPencilAlt /> Add Inventory
+                      <HiPencilAlt /> Add New Item
                     </span>
                   </NavLink>
                 </li>

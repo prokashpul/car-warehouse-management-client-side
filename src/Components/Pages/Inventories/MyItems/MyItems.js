@@ -20,12 +20,11 @@ const MyItems = () => {
     const runData = async () => {
       setLoading(true);
       const { data } = await axios(
-        `https://hidden-lake-88703.herokuapp.com/cars?limit=`
+        `https://hidden-lake-88703.herokuapp.com/cars?email=${user.email}`
       );
       if (data?.success) {
         const myData = data.data.filter((myInv) => myInv.email === user.email);
         setInventories(myData);
-
         setLoading(false);
       } else {
         toast.error(data?.error);
