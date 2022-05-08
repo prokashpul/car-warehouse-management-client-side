@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
   background-clip: border-box;
   background-attachment: fixed;
-  height: 500px;
+  height: 650px;
   margin-top: -80px;
   padding-top: 60px;
 }
@@ -14,14 +14,20 @@
   justify-content: center;
   align-items: center;
   padding: 50px 20px;
-  height: 500px;
+  height: 550px;
 }
 .banner-left {
   color: var(--white-color);
 }
-.banner-left h2 {
+.banner-left h1 {
   color: var(--primary-color);
   font-weight: 700;
+  text-shadow: 2px 2px var(--white-color);
+  margin: 20px 0;
+}
+.banner-left h4 {
+  font-weight: 700;
+  text-shadow: 2px 2px 14px var(--secondary-color);
 }
 .banner-left .btn {
   background-color: var(--primary-color);
@@ -41,6 +47,7 @@
   }
   .banner-container,
   .home-banner {
-    height: 350px;
+    height: 75vh;
+    padding-top: 30px;
   }
 }

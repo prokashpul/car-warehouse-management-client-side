@@ -1,11 +1,11 @@
 .footer {
-  height: 50px;
   background-color: var(--secondary-color);
   color: var(--white-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 15px 0;
 }
 .copyright {
   font-size: 20px;
@@ -14,4 +14,10 @@
   color: var(--primary-color);
   font-size: 22px;
   font-weight: 700;
+}
+@media (max-width: 677px) {
+  .copyright,
+  .copyright span {
+    font-size: 15px;
+  }
 }
