@@ -108,7 +108,7 @@ const AllInventory = () => {
         ),
       },
     ],
-    []
+    [deleteItem, navigate]
   );
   if (loading) {
     return <Spinner></Spinner>;

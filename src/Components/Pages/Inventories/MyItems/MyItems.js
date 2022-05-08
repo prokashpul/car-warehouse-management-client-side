@@ -105,7 +105,7 @@ const MyItems = () => {
         ),
       },
     ],
-    []
+    [deleteItem, navigate]
   );
   if (loading) {
     return <Spinner></Spinner>;
