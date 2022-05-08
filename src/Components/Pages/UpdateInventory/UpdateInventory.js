@@ -55,21 +55,18 @@ const UpdateInventory = () => {
     add();
     reset();
   };
-  const handelDelever = () => {
-    const add = async () => {
-      if (inventory.quantity > 0) {
-        const addQuantity = parseInt(inventory.quantity) - 1;
-        inventory.quantity = addQuantity;
-        setDelever(inventory.quantity);
-        try {
-          const url = `https://hidden-lake-88703.herokuapp.com/cars/${inventory?._id}`;
-          await axios.put(url, { inventory });
-        } catch (error) {
-          toast(error.message);
-        }
+  const handelDelever = async () => {
+    if (inventory.quantity > 0) {
+      const addQuantity = parseInt(inventory.quantity) - 1;
+      inventory.quantity = addQuantity;
+      setDelever(inventory.quantity);
+      try {
+        const url = `https://hidden-lake-88703.herokuapp.com/cars/${inventory?._id}`;
+        await axios.put(url, { inventory });
+      } catch (error) {
+        toast(error.message);
       }
-    };
-    add();
+    }
   };
 
   if (loading) {
