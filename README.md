@@ -19,6 +19,7 @@
 > - npm i react-table
 > - npm install react-slick --save
 > - npm install aos --save
+> - npm install --save sweetalert2 sweetalert2-react-content
 
 ## `About This Project :`
 
@@ -27,7 +28,7 @@
 > - my item option only show login user inventory item
 > - all inventory page show item display table and item delete option
 > - add inventory page to post inventory
-> - blog page show question and answer
+> - Blog page show question and answer
 > - all inventory page add pagination
 > - email and password and google login with firebase
 > - email verification and recovery password

@@ -8,7 +8,7 @@ const Banner = () => {
       <div className="banner-container container">
         <div className="banner-left">
           <h4>Search Your Dreams Car</h4>
-          <h1>WEB CUR MANAGER INVENTORY</h1>
+          <h1>WEB CAR MANAGER INVENTORY</h1>
           <button
             onClick={() => navigate("/inventories/all-inventory")}
             className="btn"

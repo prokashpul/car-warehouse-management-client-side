@@ -8,6 +8,7 @@ import auth from "../../../../firebase/firebase.init";
 import title from "../../../../Utilities/dynamicName";
 import Spinner from "../../../Spinner/Spinner";
 import DataTables from "../AllInventory/DataTable/DataTables";
+import Swal from "sweetalert2";
 import "./MyItem.css";
 
 const MyItems = () => {
@@ -33,19 +34,28 @@ const MyItems = () => {
     runData();
   }, [user.email]);
   const deleteItem = (id) => {
-    const proceed = window.confirm("Are you agree to delete ?");
-    if (proceed) {
-      const url = `https://hidden-lake-88703.herokuapp.com/cars/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const reaming = inventories?.filter((inv) => inv._id !== id);
-          setInventories(reaming);
-          toast("delete successfully");
-        });
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = `https://hidden-lake-88703.herokuapp.com/cars/${id}`;
+        fetch(url, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            const reaming = inventories?.filter((inv) => inv._id !== id);
+            setInventories(reaming);
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          });
+      }
+    });
   };
   const columns = useMemo(
     () => [
@@ -95,7 +105,7 @@ const MyItems = () => {
         ),
       },
     ],
-    [deleteItem, navigate]
+    []
   );
   if (loading) {
     return <Spinner></Spinner>;
