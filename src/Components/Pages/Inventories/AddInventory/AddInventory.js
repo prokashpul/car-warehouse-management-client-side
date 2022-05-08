@@ -80,6 +80,7 @@ const AddInventory = () => {
               <input
                 type="number"
                 id="price"
+                min="0"
                 placeholder="Price"
                 {...register("price", {
                   required: "You must specify a price and only input number",
@@ -93,6 +94,7 @@ const AddInventory = () => {
             <div className="form-group">
               <input
                 type="number"
+                min="0"
                 id="quantity"
                 placeholder="Quantity"
                 {...register("quantity", {
