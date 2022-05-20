@@ -1,10 +1,7 @@
 # Getting Started with Create React App
 
 > - Live site https://webcarmanager.web.app/
-> - server git link - https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-prokashpul
-> - clint site git link - https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-prokashpul
-> - heroku server - https://hidden-lake-88703.herokuapp.com/
-> - stackoverflow Answer- https://stackoverflow.com/a/72060611/18097290
+> - server git https://github.com/prokashpul/cr-warehouse-management-server-side
 
 ## `Technology Used :`
 
